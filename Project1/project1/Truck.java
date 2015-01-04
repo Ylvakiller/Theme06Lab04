@@ -2,31 +2,49 @@ package project1;
 
 public class Truck extends Vehicle {
 
+	/**
+	 * The amount that can be loaded on this truck
+	 */
 	double loadCapacity;
+	
+	/**
+	 * The amount that this truck can tow
+	 */
 	double towingCapacity;
 	
 	public Truck() {
-		// TODO Auto-generated constructor stub
+		super();
+		loadCapacity = 0;
+		towingCapacity = 0;
 	}
 
 	public Truck(String manufacturersName) {
 		super(manufacturersName);
-		// TODO Auto-generated constructor stub
+		loadCapacity = 0;
+		towingCapacity = 0;
 	}
 
 	public Truck(int numberOfCylinders) {
 		super(numberOfCylinders);
-		// TODO Auto-generated constructor stub
+		loadCapacity = 0;
+		towingCapacity = 0;
 	}
 
 	public Truck(Person owner) {
 		super(owner);
-		// TODO Auto-generated constructor stub
+		loadCapacity = 0;
+		towingCapacity = 0;
 	}
-
-	public Truck(String manufacturersName, int numberOfCylinders, Person owner) {
+	
+	public Truck(double loadCapacity, double towingCapacity){
+		super();
+		this.loadCapacity = loadCapacity;
+		this.towingCapacity = towingCapacity;
+	}
+	public Truck(String manufacturersName, int numberOfCylinders, Person owner, double loadCapacity, double towingCapacity) {
 		super(manufacturersName, numberOfCylinders, owner);
-		// TODO Auto-generated constructor stub
+		this.loadCapacity = loadCapacity;
+		this.towingCapacity = towingCapacity;
 	}
 
 }
