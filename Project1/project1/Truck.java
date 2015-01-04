@@ -107,5 +107,22 @@ public class Truck extends Vehicle {
 	public void setTowingCapacity(double towingCapacity) {
 		this.towingCapacity = towingCapacity;
 	}
+	
+	/**
+	 * Will compare all the fields of this object with a different Truck object
+	 * Uses the equals method from the super class
+	 * @param otherTruck the Truck to compare to
+	 * @return true if both objects have the same values (ignoring case)
+	 */
+	public boolean equals(Truck otherTruck){	//I do not need to override since this equals method needs a type Truck instead of a type Vehicle
+		if (this.towingCapacity==otherTruck.getLoadCapacity()){
+			if (this.towingCapacity==otherTruck.getTowingCapacity()){
+				if (super.equals(otherTruck)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }
