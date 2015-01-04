@@ -107,5 +107,21 @@ public class Vehicle {
 	public void setOwner(Person owner) {
 		this.owner = owner;
 	}
+	
+	/**
+	 * Checks all the variables of both vehicles, if all are the same (ignoring case) then it will return true
+	 * @param otherVehicle the vehicle to compare to this vehicle
+	 * @return true if thay are the same, false if they are not
+	 */
+	public boolean equals(Vehicle otherVehicle){
+		if (this.manufacturersName.equalsIgnoreCase(otherVehicle.getManufacturersName())){
+			if (this.numberOfCylinders==otherVehicle.getNumberOfCylinders()){
+				if (this.owner.hasSameName(otherVehicle.owner)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }
