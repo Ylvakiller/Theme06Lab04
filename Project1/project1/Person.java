@@ -1,6 +1,9 @@
 package project1;
 
 public class Person {
+	/**
+	 * 
+	 */
 	private String name;
 	public Person(){
 		name = "No Name Yet";
