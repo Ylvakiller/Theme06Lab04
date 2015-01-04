@@ -111,7 +111,7 @@ public class Vehicle {
 	/**
 	 * Checks all the variables of both vehicles, if all are the same (ignoring case) then it will return true
 	 * @param otherVehicle the vehicle to compare to this vehicle
-	 * @return true if thay are the same, false if they are not
+	 * @return true if they are the same, false if they are not
 	 */
 	public boolean equals(Vehicle otherVehicle){
 		if (this.manufacturersName.equalsIgnoreCase(otherVehicle.getManufacturersName())){
