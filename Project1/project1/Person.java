@@ -48,7 +48,7 @@ public class Person {
      */
     public void writeOutput()
     {
-        System.out.println("name: " + name);
+        System.out.println("Name: " + name);
     }
     /**
      * Will return true if both the given and the current object have the same name
