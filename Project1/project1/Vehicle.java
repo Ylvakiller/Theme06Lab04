@@ -61,7 +61,7 @@ public class Vehicle {
 		this.owner = owner;
 	}
 	/**
-	 * Sets all the variables following the given input
+	 * Constructs all the variables following the given input
 	 * @param manufacturersName the manufacturers name to set
 	 * @param numberOfCylinders the number of cylinders to give this vehicle
 	 * @param owner the owner of this vehicle
@@ -69,6 +69,42 @@ public class Vehicle {
 	public Vehicle(String manufacturersName, int numberOfCylinders, Person owner){
 		this.manufacturersName = manufacturersName;
 		this.numberOfCylinders = numberOfCylinders;
+		this.owner = owner;
+	}
+	/**
+	 * @return the manufacturersName
+	 */
+	public String getManufacturersName() {
+		return manufacturersName;
+	}
+	/**
+	 * @param manufacturersName the manufacturersName to set
+	 */
+	public void setManufacturersName(String manufacturersName) {
+		this.manufacturersName = manufacturersName;
+	}
+	/**
+	 * @return the numberOfCylinders
+	 */
+	public int getNumberOfCylinders() {
+		return numberOfCylinders;
+	}
+	/**
+	 * @param numberOfCylinders the numberOfCylinders to set
+	 */
+	public void setNumberOfCylinders(int numberOfCylinders) {
+		this.numberOfCylinders = numberOfCylinders;
+	}
+	/**
+	 * @return the owner
+	 */
+	public Person getOwner() {
+		return owner;
+	}
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(Person owner) {
 		this.owner = owner;
 	}
 
