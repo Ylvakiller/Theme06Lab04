@@ -80,4 +80,32 @@ public class Truck extends Vehicle {
 		this.towingCapacity = towingCapacity;
 	}
 
+	/**
+	 * @return the loadCapacity
+	 */
+	public double getLoadCapacity() {
+		return loadCapacity;
+	}
+
+	/**
+	 * @param loadCapacity the loadCapacity to set
+	 */
+	public void setLoadCapacity(double loadCapacity) {
+		this.loadCapacity = loadCapacity;
+	}
+
+	/**
+	 * @return the towingCapacity
+	 */
+	public double getTowingCapacity() {
+		return towingCapacity;
+	}
+
+	/**
+	 * @param towingCapacity the towingCapacity to set
+	 */
+	public void setTowingCapacity(double towingCapacity) {
+		this.towingCapacity = towingCapacity;
+	}
+
 }
