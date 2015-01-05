@@ -130,7 +130,7 @@ public class Vehicle {
 	 */
 	public void writeOutput(){
 		System.out.println("The name of the manufacturers is: " + manufacturersName);
-		System.out.println("The amound of cylinders: " + numberOfCylinders);
+		System.out.println("The amount of cylinders: " + numberOfCylinders);
 		System.out.println("Following are all the details of the owner:");
 		owner.writeOutput();
 	}

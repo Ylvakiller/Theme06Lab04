@@ -43,7 +43,8 @@ public class Driver {
 
 	
 	public static void main(String[] args) {
-		
+		Truck test = new Truck();
+		test.writeOutput();
 
 	}
 
