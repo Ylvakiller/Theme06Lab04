@@ -115,7 +115,7 @@ public class Truck extends Vehicle {
 	 * @return true if both objects have the same values (ignoring case)
 	 */
 	public boolean equals(Truck otherTruck){	//I do not need to override since this equals method needs a type Truck instead of a type Vehicle
-		if (this.towingCapacity==otherTruck.getLoadCapacity()){
+		if (this.loadCapacity==otherTruck.getLoadCapacity()){
 			if (this.towingCapacity==otherTruck.getTowingCapacity()){
 				if (super.equals(otherTruck)){
 					return true;
@@ -125,4 +125,14 @@ public class Truck extends Vehicle {
 		return false;
 	}
 
+	/**
+	 * Will write all the details to the user
+	 * Uses the writeOutput of the Vehicle class
+	 */
+	public void writeOutput(){
+		System.out.println("Load capacaity: " + loadCapacity);
+		System.out.println("Towing capacity: " + towingCapacity);
+		super.writeOutput();
+		
+	}
 }
