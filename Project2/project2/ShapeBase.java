@@ -7,7 +7,7 @@ package project2;
  */
 public abstract class ShapeBase implements ShapeInterface {
 
-	private int offset;
+	protected int offset;
 	
 	public void setOffset(int newOffset){
 		offset = newOffset;
