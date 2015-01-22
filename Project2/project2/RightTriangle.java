@@ -30,18 +30,27 @@ public class RightTriangle extends ShapeBase {
 		}
 		offset = 0;
 	}
-
+	/**
+	 * This method is used to draw the RightTriangle
+	 */
 	@Override
 	public void drawHere() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method will calculate the area and return that to the user
+	 * @return a double value calculated for the area of 
+	 */
 	@Override
 	public double calcArea() {
 		return (double)(height*width)/2;
 	}
-
+	/**
+	 * This method will calculate and return the circumference
+	 * @return a double value of the circumference calculated using pythagoras
+	 */
 	@Override
 	public double calcCircumference() {
 		// TODO Auto-generated method stub
