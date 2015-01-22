@@ -61,8 +61,8 @@ public class RightTriangle extends ShapeBase {
 	 */
 	@Override
 	public double calcCircumference() {
-		// TODO Auto-generated method stub
-		return 0;
+		double extraSide = Math.pow(height,2)+Math.pow(width,2);
+		return Math.sqrt(extraSide);
 	}
 
 }
