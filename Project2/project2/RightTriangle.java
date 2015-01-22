@@ -1,10 +1,18 @@
 package project2;
 
 public class RightTriangle extends ShapeBase {
-
+	/**
+	 * The height of the triangle
+	 */
 	private int height;
+	/**
+	 * The width of the triangle
+	 */
 	private int width;
 	
+	/**
+	 * Basic constructor, will set the height and width to 1 and the offset to 0
+	 */
 	public RightTriangle() {
 		height = 1;
 		width =1;
