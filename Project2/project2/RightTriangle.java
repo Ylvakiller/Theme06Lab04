@@ -9,22 +9,22 @@ public class RightTriangle extends ShapeBase {
 	 * Basic constructor, will set the size to 1 and the offset to 0
 	 */
 	public RightTriangle() {
-		size = 1;
+		size = 2;
 		offset =0;
 	}
 	/**
 	 * Will set the size to the input,
 	 * Will set the offset to 0
 	 * Will throw a NumberFormatException if the given input is of incorrect form
-	 * @param size the height, must be a positive integer (not including 0)
+	 * @param size the size, must be a positive integer of at least 2
 	 */
 	public RightTriangle(int size){
-		if (size <=0){
+		if (size <2){
 			throw new NumberFormatException("The height entered, " + size + " is below or equal to 0, this is an invalid input");
 		}else{
 			this.size = size;
 		}
-		offset = 0;
+		offset = 3;
 	}
 	/**
 	 * This method is used to draw the RightTriangle
@@ -32,13 +32,36 @@ public class RightTriangle extends ShapeBase {
 	@Override
 	public void drawHere() {
 		int i = 0;
-		while (i<offset){
-			System.out.println("");
-		}
-		i = 0;
 		int y = 0;
-		while (i<size){
+		while (i<size-1){
+			while (y<offset){
+				System.out.print(" ");
+				y++;
+			}
 			System.out.print("|");
+			while(y-offset<i){
+				System.out.print(" ");
+				y++;
+			}
+			y=0;
+			System.out.println("\\");
+			i++;
+		}
+		y=0;
+		while (y<offset){
+			System.out.print(" ");
+			y++;
+		}
+		if (size ==2){
+			System.out.println("|_\\");
+		}else{
+			System.out.print("|_");
+			i=3;
+			while(i<size){
+				System.out.print("_");
+				i++;
+			}
+			System.out.println("_\\");
 		}
 
 	}

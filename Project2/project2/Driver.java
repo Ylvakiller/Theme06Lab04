@@ -39,6 +39,8 @@ package project2;
 public class Driver {
 
 	public static void main(String[] args) {
+		RightTriangle test = new RightTriangle(10);
+		test.drawHere();
 		
 	}
 
