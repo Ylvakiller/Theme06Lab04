@@ -43,9 +43,39 @@ public class Driver {
 
 	
 	public static void main(String[] args) {
-		Truck test = new Truck();
-		test.writeOutput();
-
+		System.out.println("testing time!");
+		System.out.println("We have to test the classes person, Vehicle and Truck.");
+		System.out.println("Since they all use the person class we will test that first.");
+		System.out.println("The person class only has a name in it, so thats all we will test");
+		System.out.println("Lets see what the default constructor will do.");
+		Person person1 = new Person();
+		System.out.println("The name stored is now:");
+		person1.writeOutput();
+		System.out.println("\nOkay so default constructor and the writeOutput methods work");
+		System.out.println("Lets set the name to Remco");
+		person1.setName("Remco");
+		person1.writeOutput();
+		System.out.println("Now testing the getter method");
+		System.out.println("Name returned is: " + person1.getName());
+		System.out.println("Now we will make another person initialised as name Remco");
+		Person person2 = new Person("Remco");
+		System.out.println("Lets compare them shall we");
+		if (person1.hasSameName(person2)){
+			System.out.println("They are the same");
+		}else{
+			System.err.println("Something went wrong, they are not the same");
+		}
+		System.out.println("For the last check we will change one of their names to Remco2 and compare them");
+		person1.setName("Remco2");
+		if (person1.hasSameName(person2)){
+			System.err.println("Something went wrong, they are the same");
+		}else{
+			System.out.println("They are not the same");
+		}
+		System.out.println("\n That the whole person testing done");
+		System.out.println("We can test the vehicle class, but testing the truck class will already do that, therefore we will only test those");
+		
+		
 	}
 
 }
