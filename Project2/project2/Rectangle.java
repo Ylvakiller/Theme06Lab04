@@ -56,6 +56,29 @@ public class Rectangle extends ShapeBase {
 		}
 		offset = 0;
 	}
+	/**
+	 * Constructor with the size and offset of the rectangle
+	 * @param width the width to set (minimum of 1)
+	 * @param height the height to set (minimum of 1)
+	 * @param offset the offset to set (minimum of 0)
+	 */
+	public Rectangle(int width, int height, int offset){
+		if (width<1){
+			throw new NumberFormatException("The width entered, " + width + " is below 2, this is an invalid input");
+		}else{
+			this.width = width;
+		}
+		if (height<1){
+			throw new NumberFormatException("The height entered, " + height + " is below 2, this is an invalid input");
+		}else{
+			this.height = height;
+		}
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
+	}
 	@Override
 	/**
 	 * This method will draw a graphically correct rectangle, the amount of lines in the horizontal will be double that of the specified width, this because one | is as large as 2 _.
