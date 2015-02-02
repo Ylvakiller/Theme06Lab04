@@ -20,11 +20,30 @@ public class RightTriangle extends ShapeBase {
 	 */
 	public RightTriangle(int size){
 		if (size <2){
-			throw new NumberFormatException("The height entered, " + size + " is below 2, this is an invalid input");
+			throw new NumberFormatException("The size entered, " + size + " is below 2, this is an invalid input");
 		}else{
 			this.size = size;
 		}
-		offset = 3;
+		offset = 0;
+	}
+	
+	/**
+	 * Will set the size to the input
+	 * Will set the offset to 0
+	 * @param size the size to set (minimum of 2)
+	 * @param offset the offset to set (minimum of 0)
+	 */
+	public RightTriangle(int size, int offset){
+		if (size <2){
+			throw new NumberFormatException("The size entered, " + size + " is below 2, this is an invalid input");
+		}else{
+			this.size = size;
+		}
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
 	}
 	/**
 	 * This method is used to draw the RightTriangle
@@ -89,14 +108,22 @@ public class RightTriangle extends ShapeBase {
 	 * @param size the size to set
 	 */
 	public void setSize(int size) {
-		this.size = size;
+		if (size <2){
+			throw new NumberFormatException("The size entered, " + size + " is below 2, this is an invalid input");
+		}else{
+			this.size = size;
+		}
 	}
 	
 	/**
 	 * @param offset the offset to set
 	 */
 	public void setOffset(int offset){
-		this.offset = offset;
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
 	}
 
 }
