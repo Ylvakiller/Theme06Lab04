@@ -2,12 +2,25 @@ package project2;
 
 public class Rectangle extends ShapeBase {
 
-	int width;
+	/**
+	 * The width of the rectangle
+	 */
+	private int width;
 	
-	int height;
+	/**
+	 * The height of the rectangle
+	 */
+	private int height;
 	
+	/**
+	 * Default constructor
+	 * Sets the offset to 0;
+	 * Sets the height and width to 2, this is the minimum due to the limitations of my drawHere method
+	 */
 	public Rectangle() {
-		// TODO Auto-generated constructor stub
+		offset = 0;
+		width =2;
+		height = 2;
 	}
 
 	@Override
