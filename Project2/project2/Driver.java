@@ -40,8 +40,9 @@ public class Driver {
 
 	public static void main(String[] args) {
 		RightTriangle test = new RightTriangle(10);
-		test.drawHere();
-		
+		//test.drawHere();
+		Rectangle test2 = new Rectangle(5,5);
+		test2.drawHere();
 	}
 
 }
