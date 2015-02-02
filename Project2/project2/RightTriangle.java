@@ -85,5 +85,18 @@ public class RightTriangle extends ShapeBase {
 		double extraSide = Math.pow(size,2)+Math.pow(size,2);
 		return Math.sqrt(extraSide);
 	}
+	/**
+	 * @param size the size to set
+	 */
+	public void setSize(int size) {
+		this.size = size;
+	}
+	
+	/**
+	 * @param offset the offset to set
+	 */
+	public void setOffset(int offset){
+		this.offset = offset;
+	}
 
 }
