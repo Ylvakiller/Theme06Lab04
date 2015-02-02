@@ -108,15 +108,21 @@ public class Rectangle extends ShapeBase {
 	}
 
 	@Override
+	/**
+	 * Will calculate and return the area of this Rectangle
+	 * @return the area of this rectangle
+	 */
 	public double calcArea() {
-		// TODO Auto-generated method stub
-		return 0;
+		return width*height;
 	}
 
 	@Override
+	/**
+	 * Will calculate and return the circumference of this Rectangle
+	 * @return the circumference of this rectangle
+	 */
 	public double calcCircumference() {
-		// TODO Auto-generated method stub
-		return 0;
+		return width*2+height*2;
 	}
 	/**
 	 * @param width the width to set
