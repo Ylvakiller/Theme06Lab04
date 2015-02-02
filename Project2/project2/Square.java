@@ -13,21 +13,33 @@ public class Square extends Rectangle {
 	/**
 	 * Constructor with size
 	 * Sets the offset to 0;
-	 * @param size the size to set
+	 * @param size the size to set (minimum of 1)
 	 */
 	public Square(int size) {
-		this.size = size;
+		if (size <1){
+			throw new NumberFormatException("The size entered, " + size + " is below 0, this is an invalid input");
+		}else{
+			this.size = size;
+		}
 		offset = 0;
 	}
 
 	/**
 	 * Constructor with size and offset
-	 * @param size the size to set
-	 * @param offset the offset to set
+	 * @param size the size to set (minimum of 1)
+	 * @param offset the offset to set (minimum of 0)
 	 */
 	public Square(int size, int offset) {
-		this.size = size;
-		this.offset = offset;
+		if (size <1){
+			throw new NumberFormatException("The size entered, " + size + " is below 0, this is an invalid input");
+		}else{
+			this.size = size;
+		}
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
 	}
 	
 	@Override
@@ -99,15 +111,23 @@ public class Square extends Rectangle {
 		return size*4;
 	}
 	/**
-	 * @param size the size to set
+	 * @param size the size to set (minimum of 1)
 	 */
 	public void setSize(int size) {
-		this.size = size;
+		if (size <1){
+			throw new NumberFormatException("The size entered, " + size + " is below 0, this is an invalid input");
+		}else{
+			this.size = size;
+		}
 	}
 	/**
-	 * @param offset the offset to set
+	 * @param offset the offset to set (minimum of 0)
 	 */
 	public void setOffset(int offset){
-		this.offset = offset;
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
 	}
 }
