@@ -57,9 +57,17 @@ public class Driver {
 		rectangleTest.setHeight(6);
 		System.out.println("We should now get that rectangle and lets draw it after 7 lines.");
 		rectangleTest.drawAt(7);
-		System.out.println("Moving onto squares");
-		Square testSquare = new Square(4);
-		testSquare.drawHere();
+		System.out.println("Moving onto squares.");
+		Square test = new Square(4);
+		System.out.println("We should now get a square of a size 4.");
+		test.drawHere();
+		System.out.println("Now lets set the size to 8 and the offset to 1 and draw it in 5 lines");
+		test.setSize(8);
+		test.setOffset(1);
+		test.drawAt(5);
+		
+		System.out.println("Thats all folks");
+		System.exit(0);
 	}
 
 }

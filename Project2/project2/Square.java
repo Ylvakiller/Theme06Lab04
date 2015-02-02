@@ -120,14 +120,34 @@ public class Square extends Rectangle {
 			this.size = size;
 		}
 	}
+	
 	/**
-	 * @param offset the offset to set (minimum of 0)
+	 * This method should not be used!
+	 * If it's used it will set the complete size to the given input
+	 * @param width the size to set
 	 */
-	public void setOffset(int offset){
-		if (offset <0){
-			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+	@Override
+	public void setWidth(int width) {
+		System.err.println("You used the wrong method! Use the setSize(int) instead.");
+		if (width<1){
+			throw new NumberFormatException("The width entered, " + width + " is below 2, this is an invalid input");
 		}else{
-			this.offset = offset;
+			this.size = width;
+		}
+	}
+	/**
+	 * This method should not be used!
+	 * If it's used it will set the complete size to the given input
+	 * @param height the size to set
+	 */
+	@Override
+	public void setHeight(int height) {
+
+		System.err.println("You used the wrong method! Use the setSize(int) instead.");
+		if (height<1){
+			throw new NumberFormatException("The height entered, " + height + " is below 2, this is an invalid input");
+		}else{
+			this.size = height;
 		}
 	}
 }
