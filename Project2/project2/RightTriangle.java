@@ -6,7 +6,7 @@ public class RightTriangle extends ShapeBase {
 	 */
 	private int size;
 	/**
-	 * Basic constructor, will set the size to 1 and the offset to 0
+	 * Basic constructor, will set the size to 2 and the offset to 0
 	 */
 	public RightTriangle() {
 		size = 2;
@@ -20,7 +20,7 @@ public class RightTriangle extends ShapeBase {
 	 */
 	public RightTriangle(int size){
 		if (size <2){
-			throw new NumberFormatException("The height entered, " + size + " is below or equal to 0, this is an invalid input");
+			throw new NumberFormatException("The height entered, " + size + " is below 2, this is an invalid input");
 		}else{
 			this.size = size;
 		}
