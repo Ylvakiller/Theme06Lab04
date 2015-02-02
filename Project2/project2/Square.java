@@ -29,5 +29,26 @@ public class Square extends Rectangle {
 		this.size = size;
 		this.offset = offset;
 	}
+	
+	@Override
+	public void drawHere(){
+		
+	}
+	@Override
+	/**
+	 * Will calculate and return the area of this square
+	 * @return the area of this square
+	 */
+	public double calcArea() {
+		return size*size;
+	}
 
+	@Override
+	/**
+	 * Will calculate and return the circumference of this square
+	 * @return the circumference of this square
+	 */
+	public double calcCircumference() {
+		return size*4;
+	}
 }

@@ -109,7 +109,7 @@ public class Rectangle extends ShapeBase {
 
 	@Override
 	/**
-	 * Will calculate and return the area of this Rectangle
+	 * Will calculate and return the area of this rectangle
 	 * @return the area of this rectangle
 	 */
 	public double calcArea() {
@@ -118,7 +118,7 @@ public class Rectangle extends ShapeBase {
 
 	@Override
 	/**
-	 * Will calculate and return the circumference of this Rectangle
+	 * Will calculate and return the circumference of this rectangle
 	 * @return the circumference of this rectangle
 	 */
 	public double calcCircumference() {
