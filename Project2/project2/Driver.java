@@ -43,6 +43,8 @@ public class Driver {
 		//test.drawHere();
 		Rectangle test2 = new Rectangle(5,5);
 		test2.drawHere();
+		test2.setOffset(4);
+		test2.drawAt(3);
 	}
 
 }

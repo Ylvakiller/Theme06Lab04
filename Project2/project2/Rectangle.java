@@ -59,12 +59,14 @@ public class Rectangle extends ShapeBase {
 	@Override
 	/**
 	 * This method will draw a graphically correct rectangle, the amount of lines in the horizontal will be double that of the specified width, this because one | is as large as 2 _.
-	 * This decision was made by me and might not be exactely what you want, however I feel this is the best solution
+	 * This decision was made by me and might not be exactly what you want, however I feel this is the best solution
+	 * Since we are doubling the amount of characters on the horizontal in order to balance the larger size of the vertical characters I will also change the size of one offset accordingly
+	 * This means that if you for example have a width of 5 and an offset of 5 then the distance from the left side to the block will be the same as the width of the block itself
 	 */
 	public void drawHere() {
 		int i = 0;
 		while (i<offset){
-			System.out.print(" ");
+			System.out.print("  ");
 			i++;
 		}
 		i=0;
@@ -78,7 +80,7 @@ public class Rectangle extends ShapeBase {
 		while (j<height){
 			i=0;
 			while (i<offset){
-				System.out.print(" ");
+				System.out.print("  ");
 				i++;
 			}
 			i=0;
@@ -93,7 +95,7 @@ public class Rectangle extends ShapeBase {
 		}
 		i=0;
 		while (i<offset){
-			System.out.print(" ");
+			System.out.print("  ");				//as discussed in the documentation, the offset is 2 spaces
 			i++;
 		}
 		i=0;
@@ -116,5 +118,24 @@ public class Rectangle extends ShapeBase {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	/**
+	 * @param width the width to set
+	 */
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	/**
+	 * @param height the height to set
+	 */
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	/**
+	 * @param offset the offset to set
+	 */
+	public void setOffset(int offset){
+		this.offset = offset;
+	}
+	
 
 }
