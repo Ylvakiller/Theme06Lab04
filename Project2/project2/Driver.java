@@ -39,12 +39,25 @@ package project2;
 public class Driver {
 
 	public static void main(String[] args) {
-		RightTriangle test = new RightTriangle(10);
-		//test.drawHere();
-		Rectangle test2 = new Rectangle(5,5);
-		test2.drawHere();
-		test2.setOffset(4);
-		test2.drawAt(3);
+		System.out.println("Time to test everything.");
+		RightTriangle triangleTest = new RightTriangle(6);
+		System.out.println("We should now get a triangle of size 6.");
+		triangleTest.drawHere();
+		triangleTest.setOffset(3);
+		triangleTest.setSize(7);
+		System.out.println("We should now get 4 empty lines followed by a triangle of size 7 with an offset of 3.");
+		triangleTest.drawAt(4);
+		System.out.println("Moving to rectangles.");
+		Rectangle rectangleTest = new Rectangle(4,5);
+		System.out.println("We should now get a rectangle of a size width of 4 and a height of 5.");
+		rectangleTest.drawHere();
+		System.out.println("Now lets give it an offset of 6, set the width to 14 and the height to 6.");
+		rectangleTest.setOffset(6);
+		rectangleTest.setWidth(14);
+		rectangleTest.setHeight(6);
+		System.out.println("We should now get that rectangle and lets draw it after 7 lines.");
+		rectangleTest.drawAt(7);
+		System.out.println("Moving onto squares");
 		Square testSquare = new Square(4);
 		testSquare.drawHere();
 	}
