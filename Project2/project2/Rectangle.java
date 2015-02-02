@@ -128,19 +128,31 @@ public class Rectangle extends ShapeBase {
 	 * @param width the width to set
 	 */
 	public void setWidth(int width) {
-		this.width = width;
+		if (width<1){
+			throw new NumberFormatException("The width entered, " + width + " is below 2, this is an invalid input");
+		}else{
+			this.width = width;
+		}
 	}
 	/**
 	 * @param height the height to set
 	 */
 	public void setHeight(int height) {
-		this.height = height;
+		if (height<1){
+			throw new NumberFormatException("The height entered, " + height + " is below 2, this is an invalid input");
+		}else{
+			this.height = height;
+		}
 	}
 	/**
 	 * @param offset the offset to set
 	 */
 	public void setOffset(int offset){
-		this.offset = offset;
+		if (offset <0){
+			throw new NumberFormatException("The offset entered, " + offset + " is below 0, this is an invalid input");
+		}else{
+			this.offset = offset;
+		}
 	}
 	
 
