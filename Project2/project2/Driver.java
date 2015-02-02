@@ -45,6 +45,8 @@ public class Driver {
 		test2.drawHere();
 		test2.setOffset(4);
 		test2.drawAt(3);
+		Square testSquare = new Square(4);
+		testSquare.drawHere();
 	}
 
 }

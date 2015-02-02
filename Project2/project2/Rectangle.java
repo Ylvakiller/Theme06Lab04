@@ -104,7 +104,7 @@ public class Rectangle extends ShapeBase {
 			System.out.print("__");
 			i++;
 		}
-		System.out.print("|");
+		System.out.println("|");
 	}
 
 	@Override
