@@ -12,6 +12,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 
 /*
  * Description as found on blackboard:
@@ -51,13 +53,19 @@ import java.awt.event.ActionEvent;
 public class Driver {
 	private static JTextField encodeInputField;
 	private static String encoded;
+	private static JTextField decodeInputField;
+	private static String decoded;
 	public static void main(String[] args) {
 		
 		final SubstitutionCipher test = new SubstitutionCipher();
 		JFrame  encodeFrame = new JFrame("Encoder");
+		encodeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		encodeFrame.getContentPane().setLayout(null);
 		encodeFrame.setSize(450, 320);
 		encodeInputField = new JTextField();
+		
+		
+		
 		encodeInputField.setBounds(10, 44, 414, 25);
 		encodeFrame.getContentPane().add(encodeInputField);
 		encodeInputField.setColumns(10);
@@ -76,28 +84,126 @@ public class Driver {
 		lblKey.setBounds(45, 85, 46, 14);
 		encodeFrame.getContentPane().add(lblKey);
 		
-		JButton encodeButton = new JButton("Encode");
-		encodeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				encoded = test.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());
-			}
-		});
+		final JButton encodeButton = new JButton("Encode");
+		encodeButton.setEnabled(false);
 		encodeButton.setBounds(221, 80, 89, 25);
 		encodeFrame.getContentPane().add(encodeButton);
 		
 		final JTextArea encodeOutputField = new JTextArea();
-		encodeOutputField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				encodeOutputField.setText(encoded);
-			}
-		});
+		
 		encodeOutputField.setBounds(10, 152, 414, 22);
 		encodeFrame.getContentPane().add(encodeOutputField);
 		encodeOutputField.setEditable(true);
 		JLabel lblEncodedText = new JLabel("Encoded text");
 		lblEncodedText.setBounds(10, 127, 161, 14);
 		encodeFrame.getContentPane().add(lblEncodedText);
+		
+		final JButton toDecoderButton = new JButton("Send to decoder");
+		toDecoderButton.setEnabled(false);
+		toDecoderButton.setBounds(10, 185, 414, 25);
+		encodeFrame.getContentPane().add(toDecoderButton);
 		encodeFrame.setVisible(true);
+		
+		
+		JFrame  decodeFrame = new JFrame("Decoder");
+		decodeFrame.setLocation(encodeFrame.getX()+encodeFrame.getWidth(), encodeFrame.getX());
+		decodeFrame.getContentPane().setLayout(null);
+		decodeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		decodeFrame.setSize(450, 320);
+		decodeInputField = new JTextField();
+		decodeInputField.setBounds(10, 44, 414, 25);
+		decodeFrame.getContentPane().add(decodeInputField);
+		decodeInputField.setColumns(10);
+		
+		JLabel lblStringToDecode = new JLabel("String to decode");
+		lblStringToDecode.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblStringToDecode.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStringToDecode.setBounds(10, 11, 414, 22);
+		decodeFrame.getContentPane().add(lblStringToDecode);
+		
+		final JSpinner decodeKeySpinner = new JSpinner();
+		decodeKeySpinner.setBounds(101, 80, 51, 25);
+		decodeFrame.getContentPane().add(decodeKeySpinner);
+		
+		JLabel lbldecodeKey = new JLabel("Key");
+		lbldecodeKey.setBounds(45, 85, 46, 14);
+		decodeFrame.getContentPane().add(lbldecodeKey);
+		
+		final JButton decodeButton = new JButton("Decode");
+		decodeButton.setEnabled(false);
+		decodeButton.setBounds(221, 80, 89, 25);
+		decodeFrame.getContentPane().add(decodeButton);
+		
+		final JTextArea decodeOutputField = new JTextArea();
+		decodeOutputField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				decodeOutputField.setText(encoded);
+			}
+		});
+		decodeOutputField.setBounds(10, 152, 414, 22);
+		decodeFrame.getContentPane().add(decodeOutputField);
+		decodeOutputField.setEditable(true);
+		JLabel lblDecodedText = new JLabel("Decoded text");
+		lblDecodedText.setBounds(10, 127, 161, 14);
+		decodeFrame.getContentPane().add(lblDecodedText);
+		
+		final JButton ToEncodeButton = new JButton("Send to encoder");
+		
+		ToEncodeButton.setBounds(10, 185, 414, 25);
+		ToEncodeButton.setEnabled(false);
+		decodeFrame.getContentPane().add(ToEncodeButton);
+		decodeFrame.setVisible(true);
+		
+		encodeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				encoded = test.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());
+				encodeOutputField.setText(encoded);
+				toDecoderButton.setEnabled(true);
+			}
+		});
+		decodeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				decoded = test.decode(decodeInputField.getText(), (int) decodeKeySpinner.getValue());
+				decodeOutputField.setText(decoded);
+				ToEncodeButton.setEnabled(true);
+			}
+		});
+		toDecoderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				decodeInputField.setText(encoded);
+				decodeButton.setEnabled(true);
+			}
+		});
+		ToEncodeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				encodeInputField.setText(decoded);
+				encodeButton.setEnabled(true);
+			}
+		});
+		encodeInputField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				encodeButton.setEnabled(true);
+			}
+		});
+		decodeInputField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				decodeButton.setEnabled(true);
+			}
+		});
+		encodeOutputField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				encodeOutputField.setText(encoded);
+			}
+		});
+		decodeOutputField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				decodeOutputField.setText(decoded);
+			}
+		});
 	}
 }
