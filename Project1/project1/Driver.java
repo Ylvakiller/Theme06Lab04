@@ -72,8 +72,39 @@ public class Driver {
 		}else{
 			System.out.println("They are not the same");
 		}
-		System.out.println("\n That the whole person testing done");
-		System.out.println("We can test the vehicle class, but testing the truck class will already do that, therefore we will only test those");
+		System.out.println("\nThats the whole person testing done");
+		System.out.println("We can test the vehicle class, but testing the truck class will already do that, therefore we will only test that\n");
+		Truck truck1 = new Truck();
+		System.out.println("Lets see what is initialised");
+		truck1.writeOutput();
+		System.out.println("Lets set the owner as Remco");
+		truck1.setOwner(person1);
+		System.out.println("Current owner of the truck is:" + truck1.getOwner().getName());
+		System.out.println("O yeah that person object has a different name, well lets change that");
+		truck1.getOwner().setName("Remco");
+		System.out.println("Current owner of the truck is:" + truck1.getOwner().getName());
+		System.out.println("Now we'll need to set the manufacturersname and the number of cylinders");
+		truck1.setManufacturersName("Scania");
+		truck1.setNumberOfCylinders(8);
+		System.out.println("\nLets see what we have so far");
+		truck1.writeOutput();
+		System.out.println("Okay now just the load capacity and the towing capacity");
+		truck1.setLoadCapacity(20.5);
+		truck1.setTowingCapacity(6.75);
+		truck1.writeOutput();
+		System.out.println("\nOkay so we can set all the variables, now lets make a new truck object with all these values in the constructor");
+		Truck truck2 = new Truck("Scania", 8, person2, 20.5, 6.75);
+		truck2.writeOutput();
+		System.out.println("\nNow we just need to check wheter or not these two are the same");
+		if (truck1.equals(truck2)){
+			System.out.println("They are the same");
+		}else{
+			System.err.println("They are not the same");
+		}
+		System.out.println("We now tested everything needing testing, the equals method of the truck class uses the equals method of the vehicle class so by testing the truck equals method we also test the vehicle version");	//sorry for the long sentence :)
+		System.out.println("\n\nThats all folks!");
+		System.exit(0);
+		
 		
 		
 	}
