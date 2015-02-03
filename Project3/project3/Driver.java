@@ -12,8 +12,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
 
 /*
  * Description as found on blackboard:
@@ -43,6 +41,13 @@ import java.awt.event.InputMethodEvent;
  * I intemperate that you want 2 abstract classes (MessageEncode and MessageDecoder)
  * Then you want a class SubstitutionCipher that uses those 2 interfaces
  * And then you want to communicate a bit with the user allowing him to enter text and letting the program decipher that
+ * 
+ * In terms of readability, this class holds 2 complete GUIs therefore it might not be the easiest to read, following is a summary of important lines for the program as described on blackboard:
+ * Line 65: making of the object of type SubstitutionCipher //final SubstitutionCipher cipher = new SubstitutionCipher();
+ * Line 166: encoding the given input //encoded = cipher.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());
+ * Line 173: decoding the given input //decoded = cipher.decode(decodeInputField.getText(), (int) decodeKeySpinner.getValue());
+ * All the actionListeners are in the bottom of this class, this should make it easier to see what happens when you do a certain action
+ * All the Jframes have a default close operation to close the complete program
  */
 
 /**
@@ -57,7 +62,8 @@ public class Driver {
 	private static String decoded;
 	public static void main(String[] args) {
 		
-		final SubstitutionCipher test = new SubstitutionCipher();
+		final SubstitutionCipher cipher = new SubstitutionCipher();
+		
 		JFrame  encodeFrame = new JFrame("Encoder");
 		encodeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		encodeFrame.getContentPane().setLayout(null);
@@ -148,62 +154,71 @@ public class Driver {
 		lblDecodedText.setBounds(10, 127, 161, 14);
 		decodeFrame.getContentPane().add(lblDecodedText);
 		
-		final JButton ToEncodeButton = new JButton("Send to encoder");
+		final JButton toEncodeButton = new JButton("Send to encoder");
 		
-		ToEncodeButton.setBounds(10, 185, 414, 25);
-		ToEncodeButton.setEnabled(false);
-		decodeFrame.getContentPane().add(ToEncodeButton);
+		toEncodeButton.setBounds(10, 185, 414, 25);
+		toEncodeButton.setEnabled(false);
+		decodeFrame.getContentPane().add(toEncodeButton);
 		decodeFrame.setVisible(true);
 		
 		encodeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				encoded = test.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());
-				encodeOutputField.setText(encoded);
-				toDecoderButton.setEnabled(true);
+				encoded = cipher.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());			//Here we get the text from the inputField and get the key entered on the spinner and send that to be encoded, we then save the resulting string
+				encodeOutputField.setText(encoded);																//Here we show the resulting encoded string to the user, allowing him to copy it if he wants
+				toDecoderButton.setEnabled(true);																//Here we enable the user to send this string directely to the decoder
 			}
 		});
 		decodeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				decoded = test.decode(decodeInputField.getText(), (int) decodeKeySpinner.getValue());
-				decodeOutputField.setText(decoded);
-				ToEncodeButton.setEnabled(true);
+				decoded = cipher.decode(decodeInputField.getText(), (int) decodeKeySpinner.getValue());			//Here we get the text from the inputField and the key entered on the spinner and send that to be decoded, we then save the resulting string
+				decodeOutputField.setText(decoded);																//Here we show the resulting decoded string to the user, allowing him to copy it if he wants
+				toEncodeButton.setEnabled(true);																//Here we enable the user to send this string directely to the encoder
 			}
 		});
-		toDecoderButton.addActionListener(new ActionListener() {
+		toDecoderButton.addActionListener(new ActionListener() {												//Here we send the encoded string to the decoder , send the key to the decoder and enable the button to decode it
 			public void actionPerformed(ActionEvent e) {
 				decodeInputField.setText(encoded);
+				decodeKeySpinner.setValue(encodeKeySpinner.getValue());
 				decodeButton.setEnabled(true);
 			}
 		});
-		ToEncodeButton.addActionListener(new ActionListener() {
+		toEncodeButton.addActionListener(new ActionListener() {													//Here we send the decoded string to the encoder, along with the key used to decode it, and we enable the button to encode it
 			public void actionPerformed(ActionEvent e) {
 				encodeInputField.setText(decoded);
+				encodeKeySpinner.setValue(decodeKeySpinner.getValue());
 				encodeButton.setEnabled(true);
 			}
 		});
-		encodeInputField.addKeyListener(new KeyAdapter() {
+		encodeInputField.addKeyListener(new KeyAdapter() {														//This will only enable the encode button after some text has been entered to encode
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				encodeButton.setEnabled(true);
 			}
 		});
-		decodeInputField.addKeyListener(new KeyAdapter() {
+		decodeInputField.addKeyListener(new KeyAdapter() {														//This will only enable the decode button after some text has been entered to decode
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				decodeButton.setEnabled(true);
 			}
 		});
-		encodeOutputField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent arg0) {
+		/*
+		 * Since we have the outputFields as editable (which we have in order to allow copying from these fields) we need to make sure that the user cannot change the string values on those fields
+		 * We do this by comparing the current text with the text as it should be, and if they are not the same we set the text back to what it should be.
+		 * We have a 100 millisecond sleep in order to save CPU load and allow the listeners to work.
+		 * 100 milliseconds should be enough to stop the user from entering text and clicking the toDecode/toEncode button before the text has been changed back
+		 */
+		while (true){																							
+			if (!encodeOutputField.getText().equals(encoded)){
 				encodeOutputField.setText(encoded);
 			}
-		});
-		decodeOutputField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent arg0) {
+			if (!decodeOutputField.getText().equals(decoded)){
 				decodeOutputField.setText(decoded);
 			}
-		});
+			try {
+				Thread.sleep(100);                 //1000 milliseconds is one second.
+			} catch(InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
+		}
 	}
 }
