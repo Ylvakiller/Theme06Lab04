@@ -83,7 +83,7 @@ public class Driver {
 		encodeFrame.getContentPane().add(lblStringToEncode);
 		
 		final JSpinner encodeKeySpinner = new JSpinner();
-		encodeKeySpinner.setBounds(101, 80, 51, 25);
+		encodeKeySpinner.setBounds(86, 80, 104, 25);
 		encodeFrame.getContentPane().add(encodeKeySpinner);
 		
 		JLabel lblKey = new JLabel("Key");
@@ -128,7 +128,7 @@ public class Driver {
 		decodeFrame.getContentPane().add(lblStringToDecode);
 		
 		final JSpinner decodeKeySpinner = new JSpinner();
-		decodeKeySpinner.setBounds(101, 80, 51, 25);
+		decodeKeySpinner.setBounds(101, 80, 104, 25);
 		decodeFrame.getContentPane().add(decodeKeySpinner);
 		
 		JLabel lbldecodeKey = new JLabel("Key");
