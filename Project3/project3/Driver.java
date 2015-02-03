@@ -47,7 +47,7 @@ import java.awt.event.ActionEvent;
  * Line 166: encoding the given input //encoded = cipher.encode(encodeInputField.getText(), (int) encodeKeySpinner.getValue());
  * Line 173: decoding the given input //decoded = cipher.decode(decodeInputField.getText(), (int) decodeKeySpinner.getValue());
  * All the actionListeners are in the bottom of this class, this should make it easier to see what happens when you do a certain action
- * All the Jframes have a default close operation to close the complete program
+ * All the jFrames have a default close operation to close the complete program
  */
 
 /**
